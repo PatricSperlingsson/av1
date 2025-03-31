@@ -28,21 +28,21 @@ transformed_block = dct(dct(residual_block.T, norm='ortho').T, norm='ortho')
 #])
 
 # Symmetric
-#quantization_matrix = np.array([
-#    [16, 12, 14, 14],
-#    [12, 16, 13, 17],
-#    [14, 13, 16, 22],
-#    [14, 17, 22, 29]
-#])
+quantization_matrix = np.array([
+   [16, 12, 14, 14],
+   [12, 16, 13, 17],
+   [14, 13, 16, 22],
+   [14, 17, 22, 29]
+])
 
 # Refined Quantization matrix
 # Less compression for better MSE, SSIM and PSNR:
-quantization_matrix = np.array([
-    [8, 6, 7, 8],
-    [6, 7, 8, 10],
-    [7, 8, 10, 13],
-    [8, 10, 13, 16]
-])
+# quantization_matrix = np.array([
+#     [8, 6, 7, 8],
+#     [6, 7, 8, 10],
+#     [7, 8, 10, 13],
+#     [8, 10, 13, 16]
+# ])
 
 # Apply quantization
 quantized_block = np.round(transformed_block / quantization_matrix)
